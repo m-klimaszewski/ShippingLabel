@@ -1,20 +1,14 @@
-import ij.ImagePlus;
-import ij.io.Opener;
-import ij.plugin.filter.GaussianBlur;
-
-import java.awt.image.SampleModel;
-
-
+import org.opencv.core.Mat;
+import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.highgui.*;
 public class Scanner_Lib {
 
-    public static void showImg(String path) {
-        Opener imagejOpener = new Opener();
-        ImagePlus img = imagejOpener.openImage(path);
-        img.setTitle("Etykieta nr." + img.getID());
-        var ip =img.getProcessor();
-        var gs = new GaussianBlur();
-        gs.blurGaussian(ip,20,20,0.01);
-        img.show();
-
+    public void display_img(String path){
+        Mat img = Imgcodecs.imread(path);
+        HighGui.namedWindow("image", HighGui.WINDOW_AUTOSIZE);
+        HighGui.imshow("image", img);
+        HighGui.waitKey();
     }
+
+
 }

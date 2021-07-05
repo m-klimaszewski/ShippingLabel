@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ShippingLabel:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ShippingLabel_jar</output-path>
+    <root id="archive" name="ShippingLabel.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="ShippingLabel" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/bytedeco/opencv/4.5.1-1.5.5/opencv-4.5.1-1.5.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/bytedeco/openblas/0.3.13-1.5.5/openblas-0.3.13-1.5.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/opencv/build/java/opencv-452.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/bytedeco/javacpp/1.5.5/javacpp-1.5.5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
