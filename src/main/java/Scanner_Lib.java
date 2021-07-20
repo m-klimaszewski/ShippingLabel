@@ -5,6 +5,7 @@ import org.opencv.highgui.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgproc.Moments;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
@@ -12,11 +13,19 @@ import java.util.List;
 public class Scanner_Lib {
 
     public void runApp(String path) throws IOException {
-      Mat inputImg = Imgcodecs.imread(path);
-      showImg(path, inputImg);
-      Mat outputImg = waybillDetector(inputImg);
-      showImg("outputImg",outputImg);
+        Mat inputImg = Imgcodecs.imread(path);
+        showImg(path, inputImg);
 
+        Mat wrppedImg = waybillDetector(inputImg);
+        showImg("outputImg", wrppedImg);
+        Mat sharpenImg = getSharpenImg(wrppedImg);
+        showImg("sharpen img", sharpenImg);
+        safeToPng(sharpenImg);
+
+    }
+
+    public void safeToPng(Mat img) {
+        Imgcodecs.imwrite("file.jpg", img);
     }
 
 
@@ -121,18 +130,16 @@ public class Scanner_Lib {
 
         if (Math.abs(propotion - 1.33) < 0.01) {
             if (isHorizontal) {
-                Imgproc.resize(img, img, new Size(1024, 768));
+                Imgproc.resize(img, img, new Size(1152, 864));
             } else {
-                Imgproc.resize(img, img, new Size(768, 1024));
+                Imgproc.resize(img, img, new Size(864, 1152));
             }
-
         } else {
             if (isHorizontal) {
                 Imgproc.resize(img, img, new Size(1280, 720));
             } else {
                 Imgproc.resize(img, img, new Size(720, 1280));
             }
-
         }
 
 
@@ -171,6 +178,15 @@ public class Scanner_Lib {
             }
         }
         return biggestArea;
+    }
+
+    public Mat getSharpenImg(Mat img) {
+        //Swap to gray scale
+        Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2GRAY);
+        //Imgproc.medianBlur(img, img,3);
+        //Imgproc.threshold(img,img,0,255,Imgproc.THRESH_OTSU);
+
+        return img;
     }
 
 
