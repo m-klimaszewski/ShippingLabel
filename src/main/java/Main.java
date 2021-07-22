@@ -10,22 +10,20 @@ public class Main {
     public static void main(String[] args) throws IOException, TesseractException, NotFoundException {
         Scanner_Lib scanner_lib = new Scanner_Lib();
         Ocr_Scanner_Lib ocr_scanner_lib = new Ocr_Scanner_Lib();
-        ocr_scanner_lib.runApp("src/main/resources/tess1.jpg");
+        //ocr_scanner_lib.runApp("src/main/resources/tess2.jpg");
 
 
 
-
-       // ocr_scanner_lib.validateMailAdress();
-        /*
-        for (int x = 46; x<=51; x++){
+        for (int x = 1; x<=51; x++){
             String numOfImg = String.valueOf(x);
             String path = "src/main/resources/sl ("+numOfImg+").jpg";
-            scanner_lib.runApp(path);
+            String savePath = "src/main/resources/"+numOfImg+".jpg";
+            scanner_lib.runApp(path, savePath);
             System.out.println(x);
         }
-         */
 
-       // scanner_lib.runApp("src/main/resources/sl (1).jpg");
+
+      // scanner_lib.runApp("src/main/resources/sl ().jpg");
 
          System.out.println(Core.VERSION);
     }

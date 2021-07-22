@@ -29,13 +29,20 @@ public class Ocr_Scanner_Lib {
         BufferedImage bffImg = getBufferedImage(path);
         List<Word> words = getWordFromImg(bffImg);
         String[] wordsTable = getSplitTable(words);
+        for (String word: wordsTable){
+            System.out.println(word);
+        }
         List<String> phoneNumbers = getPhoneNumber(wordsTable);
-        List<String> mailAdress = getMailAdress(wordsTable);
-        List<String> barcodes = getBarcode(bffImg);
+        List<String> mailAdress = getMailAddress(wordsTable);
+       //List<String> barcodes = getBarcode(bffImg);
+        /*
         for (String mail : barcodes) {
             System.out.println(mail);
         }
-        getBarcode(bffImg);
+
+         */
+
+        getAddress(wordsTable);
 
 
     }
@@ -56,7 +63,7 @@ public class Ocr_Scanner_Lib {
         for (Word word : wordList) {
             String tmp = word.getText();
             if (!tmp.isEmpty()) {
-                words += tmp;
+                words += tmp.toUpperCase();
             }
         }
 
@@ -74,10 +81,57 @@ public class Ocr_Scanner_Lib {
         for (Result result : bcReader.decodeMultiple(bitmap, hints)) {
             barcodes.add(result.getText());
         }
-
-
         return barcodes;
     }
+
+    private List<String> getCountriesName (){
+        Locale.setDefault(new Locale("en"));
+        String[] locales = Locale.getISOCountries();
+        List<String> countries = new ArrayList<>();
+        for (String countryCode : locales){
+            Locale obj = new Locale("",countryCode);
+            countries.add(obj.getDisplayName().toUpperCase());
+        }
+       // countries.forEach(System.out::println);
+        return countries;
+    }
+
+    private List<String> getCountriesCode (){
+        Locale.setDefault(new Locale("en"));
+        String[] locales = Locale.getISOCountries();
+        List<String> countryCodes = new ArrayList<>();
+        for (String countryCode : locales){
+            Locale obj = new Locale("",countryCode);
+            countryCodes.add(obj.getCountry().toUpperCase(Locale.ROOT));
+        }
+       // countryCodes.forEach(System.out::println);
+        return countryCodes;
+    }
+    public void getAddress(String[] words){
+        List<String> countryCodes = getCountriesCode();
+        List<String> countries = getCountriesName();
+        int cnt = 0;
+        int pos1 = 0;
+        int pos2 = 0;
+        boolean trigger = true;
+
+        for(String word : words){
+            if (countries.contains(word)||countryCodes.contains(word)){
+                if (trigger){
+                    pos1 = cnt;
+                    trigger = false;
+                } else {
+                    pos2 = cnt;
+                    break;
+                }
+            }
+            cnt++;
+        }
+
+        System.out.println("Pos 1 kraju: " + words[pos1] + " \nPos 2 kraju: " + words[pos2]);
+    }
+
+
 
     public List<String> getPhoneNumber(String[] words) {
         Pattern pattern = Pattern.compile("^(\\d{9}|\\d{11,13})$");
@@ -100,7 +154,7 @@ public class Ocr_Scanner_Lib {
         }
     }
 
-    public List<String> getMailAdress(String[] words) {
+    public List<String> getMailAddress(String[] words) {
         Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
         List<String> mailAdress = new ArrayList<>();
 

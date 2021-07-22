@@ -12,20 +12,20 @@ import java.util.List;
 
 public class Scanner_Lib {
 
-    public void runApp(String path) throws IOException {
+    public void runApp(String path, String savePath) throws IOException {
         Mat inputImg = Imgcodecs.imread(path);
-        showImg(path, inputImg);
 
-        Mat wrppedImg = waybillDetector(inputImg);
-        showImg("outputImg", wrppedImg);
-        Mat sharpenImg = getSharpenImg(wrppedImg);
-        showImg("sharpen img", sharpenImg);
-        safeToPng(sharpenImg);
+        //Mat wrppedImg = preprocessingImg(inputImg);
+        saveToPng(inputImg,savePath);
+
+        //Mat sharpenImg = getSharpenImg(wrppedImg);
+
+
 
     }
 
-    public void safeToPng(Mat img) {
-        Imgcodecs.imwrite("file.jpg", img);
+    public void saveToPng(Mat img, String path) {
+        Imgcodecs.imwrite(path, img);
     }
 
 
