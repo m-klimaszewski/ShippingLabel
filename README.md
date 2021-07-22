@@ -2,7 +2,7 @@
 
 ## Wydział Nauk Ścisłych i Technicznych
 
-### Wzorce Projektowe, Zadanie 5 - Dekorator.
+### Skaner Listów Przewozowych
 
 > Wykonał: Mateusz Klimaszewski, gr. PGK 2.
 
