@@ -31,6 +31,8 @@
 
 <div id="BP"></div>
 
+# Algorytm wykrywania etykiet listów przewozowych i tranformacji ich do przestrzeni 2D
+
 ## Metodyka wykonywania zdjęć:
 
 > Proponowany algorytm do prawidłowego działania wymaga, aby list przewozowy był największym elementem zdjęcia oraz
@@ -72,6 +74,25 @@
 > * Transformacja zdjęcia z przestrzeni 3d do 2d
 ### Zdjęcia po transformacji
 ![Images before preprocessing ](src/main/resources/wrappedTransform.png)
+
+## Podsumowanie algorytmu wykrywania etykiet listów przewozowych i transformacji ich do przestrzeni 2D
+### Obserwacje:
+> 
+> W przypadku nr. 18 oraz 24 wykryto błędnie etykietę przewozową. W przypadkach nr. 13,27,40 algorytm nie był
+> w stanie wykryć w największej krawędzi znalezionej po preprocessingu wszytkich 4 jego rogów - prawdopodbnie w pewnym
+> momencie krawędź etykiety została zatracona. Mogło być to spowodowane przez np. nierównomierne oświetlenie, bądź 
+> słaby kontrast między krawędzią listu a jego tłem. Warto też zauważyć, że w zdjęciach nr. 37 oraz 39 zdjęcie zostało
+> nieporpawnie przeskalowane.
+### Wnioski:
+> Sktuteczność proponowanego algorytmu, biorąc pod uwagę wyłącznie przypadki braku wykrycia etykiety na próbce 51 zdjęć 
+> wynosi 90.19%. W przypadku, gdy wliczymy zdjęcia, które w sposób mocno zniekształcony zostały przeskalowane, 
+> skuteczność ta spada do 86.28%
+# Algorytmy wykrywające charakterystyczne elementy na etykietach listów przewozowych
+## Metody wykrywania charakterystycznych elementów:
+> W celu wykrycia użytecznych informacji na etykietach użyto następujących bibliotek:
+> * ZXing - biblioteka służąca do dekodowania kodów kreskowych ze zdjęć. 
+> * Tess4J - biblioteka OCR, której główną funkcją jest zaczytanie tekstu ze zdjęć.
+
 
 
 
