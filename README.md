@@ -35,7 +35,7 @@
 
 > Proponowany algorytm do prawidłowego działania wymaga, aby list przewozowy był największym elementem zdjęcia oraz
 > znajdował się na wyróżnającym go tle. Zdjęcia robione są z różnego kąta, aby sprawdzić skuteczność algorytmu.
-###Zdjęcia przed preprocessingiem
+### Zdjęcia przed preprocessingiem
 
 ![Images before preprocessing ](src/main/resources/beforePreprocessing.png)
 
