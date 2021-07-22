@@ -7,17 +7,17 @@
 > Wykonał: Mateusz Klimaszewski, gr. PGK 2.
 
 <div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
+
 </div>
 
 ## Spis treści:
 
 - Wstęp:
-    - <a href="#BP">Zdjęcia przed preprocessingiem</a>
+    - <a href="#BP">Metodyka wykonywania zdjęć</a>
 - Preprocessing:
-    - <a href="#APP">Application.java</a>
+    - <a href="#PP">Preprocessing</a>
 - Perspective Transform:
-    - <a href="#H">Hero.java</a>
+    - <a href="#PT">Perspective Transform</a>
 >Projekt został wykonany w języku Java oraz przy wykorzystaniu dodatkowych bibliotek:
 > * OpenCV - biblioteka do przetwarzania obrazów
 > * ZXing - biblioteka do wykrywania i dekodowania kodów kreskowych
@@ -25,11 +25,11 @@
 
 > <a href="https://github.com/m-klimaszewski/ShippingLabel">Repozytorium GitHub</a>
 
-<div id="BP"></div>
 
 <div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
 </div>
+
+<div id="BP"></div>
 
 ## Metodyka wykonywania zdjęć:
 
@@ -40,11 +40,10 @@
 ![Images before preprocessing ](src/main/resources/beforePreprocessing.png)
 
 <div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
 </div>
 
 
-<div id="APP"></div>
+<div id="PP"></div>
 
 ## Preprocessing
 >Zdjęcia w pierwszej fazie działania algorytmu są poddawane preprocessingu w celu zwiększenia skuteczności wykrycia 
@@ -62,7 +61,7 @@
 
 
 
-<div id="H"></div>
+<div id="PT"></div>
 
 ## Transofrmacja etykiety z przestrzeni 3d do 2d
 > W tym etapie obraz jest poddawany następującym procesom:
@@ -75,44 +74,8 @@
 ![Images before preprocessing ](src/main/resources/wrappedTransform.png)
 
 
-```
-package com.company;
-
-import javax.print.attribute.HashPrintJobAttributeSet;
-
-public abstract class Hero {
-    private static int HP = 100;
-    private static int demage = 10;
-    private static int armor = 10;
-    boolean gloves, helemet, boots, sword, trousers = false;
-
-   String getHero(){
-       return "Twój Bohater:\n Hp: "+HP
-               + "\nAtak: " + demage
-               +"\nArmor: " + armor;
-   }
-
-    static void add_equipment(Equipment equipment) {
-
-        HP += equipment.HP();
-        demage += equipment.Demage();
-        armor += equipment.Armor();
-        System.out.println("Dodano: " + equipment.getName() );
-
-    }
-   static void remove_equipment(Equipment equipment) {
-        HP -= equipment.HP();
-        demage -= equipment.Demage();
-        armor -= equipment.Armor();
-       System.out.println("Usunięto: " + equipment.getName() );
-    }
 
 
-}
-
-```
-
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
+<div style="page-break-after: always; visibility: hidden">
 </div>
 
