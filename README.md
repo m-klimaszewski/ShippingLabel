@@ -18,6 +18,8 @@
     - <a href="#PP">Preprocessing</a>
 - Perspective Transform:
     - <a href="#PT">Perspective Transform</a>
+- Algorytmy wykrywające charakterystyczne elementy na etykietach listów przewozowych
+    - <a href="#MW">Metody wykrywania charakterystycznych elementów</a>
 >Projekt został wykonany w języku Java oraz przy wykorzystaniu dodatkowych bibliotek:
 > * OpenCV - biblioteka do przetwarzania obrazów
 > * ZXing - biblioteka do wykrywania i dekodowania kodów kreskowych
@@ -87,6 +89,9 @@
 > Sktuteczność proponowanego algorytmu, biorąc pod uwagę wyłącznie przypadki braku wykrycia etykiety na próbce 51 zdjęć 
 > wynosi 90.19%. W przypadku, gdy wliczymy zdjęcia, które w sposób mocno zniekształcony zostały przeskalowane, 
 > skuteczność ta spada do 86.28%
+>
+<div id="MW"></div>
+
 # Algorytmy wykrywające charakterystyczne elementy na etykietach listów przewozowych
 ## Metody wykrywania charakterystycznych elementów:
 > W celu wykrycia użytecznych informacji na etykietach użyto następujących bibliotek:
