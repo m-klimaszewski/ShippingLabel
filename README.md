@@ -91,7 +91,13 @@
 ## Metody wykrywania charakterystycznych elementów:
 > W celu wykrycia użytecznych informacji na etykietach użyto następujących bibliotek:
 > * ZXing - biblioteka służąca do dekodowania kodów kreskowych ze zdjęć. 
-> * Tess4J - biblioteka OCR, której główną funkcją jest zaczytanie tekstu ze zdjęć.
+> * Tess4J - biblioteka OCR, której główną funkcją jest zaczytanie tekstu ze zdjęć. \
+>
+> Założeniem jest wykrycie elementów charakterystycznych takich jak:
+>  * Adres email
+>  * Numer telefonu  
+>  * Zdekodowany kod kreskowy przy pomocy biblioteki ZXing
+
 
 
 
