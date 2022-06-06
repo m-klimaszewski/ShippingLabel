@@ -15,11 +15,10 @@ public class Scanner_Lib {
     public void runApp(String path, String savePath) throws IOException {
         Mat inputImg = Imgcodecs.imread(path);
 
-        //Mat wrppedImg = preprocessingImg(inputImg);
-        saveToPng(inputImg,savePath);
+        Mat wrppedImg = preprocessingImg(inputImg);
+        saveToPng(wrppedImg, savePath);
 
         //Mat sharpenImg = getSharpenImg(wrppedImg);
-
 
 
     }
