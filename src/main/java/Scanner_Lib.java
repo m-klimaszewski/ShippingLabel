@@ -5,7 +5,6 @@ import org.opencv.highgui.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgproc.Moments;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
@@ -15,16 +14,16 @@ public class Scanner_Lib {
     public void runApp(String path, String savePath) throws IOException {
         Mat inputImg = Imgcodecs.imread(path);
 
-        Mat wrppedImg = preprocessingImg(inputImg);
+        Mat wrppedImg = waybillDetector(inputImg);
         saveToPng(wrppedImg, savePath);
-
-        //Mat sharpenImg = getSharpenImg(wrppedImg);
-
-
     }
 
     public void saveToPng(Mat img, String path) {
         Imgcodecs.imwrite(path, img);
+    }
+
+    public Mat getImg(String path) {
+        return Imgcodecs.imread(path);
     }
 
 
