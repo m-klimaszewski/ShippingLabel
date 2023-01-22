@@ -69,14 +69,14 @@ public class Scanner_Lib {
 
     public Mat preprocessingImg(Mat img) {
         resizeImg(img);
-        Mat gray = new Mat();
+        Mat grayScaleImg = new Mat();
         //blur img
         Imgproc.medianBlur(img, gray, 9);
         //swap to gray scale
         Imgproc.cvtColor(gray, gray, Imgproc.COLOR_RGB2GRAY);
         //canny detector
         Imgproc.Canny(gray, gray, 85, 150);
-        return gray;
+        return grayScaleImg;
     }
 
     public MatOfPoint2f sortPoint(List<MatOfPoint2f> biggestContour) {
