@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Scanner_Lib {
 
-    public void runApp(String path, String savePath) throws IOException {
+    public void transformImg(String path, String savePath) throws IOException {
         Mat inputImg = Imgcodecs.imread(path);
 
         Mat wrppedImg = waybillDetector(inputImg);
@@ -36,6 +36,11 @@ public class Scanner_Lib {
         // #3 find biggest contour, sort maxarea corners
         List<MatOfPoint2f> biggestContour = biggestContour(contours);
         MatOfPoint2f sortedCorners = sortPoint(biggestContour);
+
+            if (Objects.equals(sortedCorners.size(), new Size(1, 1))) {
+               return img;
+            }
+
         // #4 get outline of img
         MatOfPoint2f outline = getOutline(img);
         //transoform img
@@ -71,11 +76,11 @@ public class Scanner_Lib {
         resizeImg(img);
         Mat grayScaleImg = new Mat();
         //blur img
-        Imgproc.medianBlur(img, gray, 9);
+        Imgproc.medianBlur(img, grayScaleImg, 9);
         //swap to gray scale
-        Imgproc.cvtColor(gray, gray, Imgproc.COLOR_RGB2GRAY);
+        Imgproc.cvtColor(grayScaleImg, grayScaleImg, Imgproc.COLOR_RGB2GRAY);
         //canny detector
-        Imgproc.Canny(gray, gray, 85, 150);
+        Imgproc.Canny(grayScaleImg, grayScaleImg, 85, 150);
         return grayScaleImg;
     }
 
@@ -105,12 +110,22 @@ public class Scanner_Lib {
                 cnt++;
             }
         }
-        MatOfPoint2f corners = new MatOfPoint2f(
-                sortedPoints[0],
-                sortedPoints[1],
-                sortedPoints[2],
-                sortedPoints[3]);
-        return corners;
+
+        for (Point sortedPoint : sortedPoints) {
+            if (sortedPoint == null) {
+                MatOfPoint2f corners = new MatOfPoint2f(
+                        new Point(0, 0)
+                );
+                return corners;
+            }
+        }
+
+          MatOfPoint2f corners = new MatOfPoint2f(
+                  sortedPoints[0],
+                  sortedPoints[1],
+                  sortedPoints[2],
+                  sortedPoints[3]);
+          return corners;
     }
 
     //this function detect only 16:9 or 4:3 resolution!!!
